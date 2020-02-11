@@ -122,11 +122,13 @@ void EnergomeraRead()
         case 8:
               Cos_f = ValueParser(ReadStr, "COS_f");
               PrintVolume(Cos_f);
+              Serial.println();
         break;
         default:
   
         break;
       }
+      ReadStr = "";
 }
 
 
