@@ -188,7 +188,7 @@ void EnergomeraCycle()
       ReadStr += inChar;
     }
     
-    ReadStr = "FREQU(50.00)";
+    //ReadStr = "FREQU(50.00)";
       
     if (millis() - Previous > 1000)
     {
