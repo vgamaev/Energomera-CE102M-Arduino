@@ -175,7 +175,7 @@ void setup()
   digitalWrite(DIR, HIGH);
 }
 
-void loop()
+void EnergomeraCycle()
 { 
   if (RS485.available())
     {
@@ -198,4 +198,8 @@ void loop()
      EmergomeraWrite();          
      }
 }
-   
+
+void loop()
+{
+    EnergomeraCycle();
+}
