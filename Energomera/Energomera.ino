@@ -1,10 +1,9 @@
 #include <SoftwareSerial.h>
 
-int i = 0;
 long Previous = 0; 
 int Step = 0;
-
 char x [50];
+
 // открываем сессию
 byte CmdOpenSesion[] = {0xaF,0x3F,0x21,0x8D,0x0A};
 // читаем тип счетчика
@@ -26,7 +25,7 @@ byte CmdCos_f[] = {0x81,0xd2,0xb1,0x82,0xc3,0x55,0xd2,0xd2,0xc5,0x28,0xa9,0x03,0
 #define CYCLE_TIME 15
 #define DIR 8 
  
-SoftwareSerial RS485 (10, 11); // RX, TX
+SoftwareSerial UART (10, 11); // RX, TX
 
 struct Energomera{
   String NameParam;
@@ -43,6 +42,7 @@ Energomera Curre;
 Energomera Frequ;
 Energomera Cos_f;
 
+
 Energomera ValueParser(String inString, String Param)
 {
   String inString2;
@@ -51,7 +51,7 @@ Energomera ValueParser(String inString, String Param)
   Buffer.NameParam = Param;
   Buffer.StrValue = "0";
   Buffer.FloatValue = 0;
-  
+
   if (inString.lastIndexOf(Param)>0) 
       {
           int first = inString.indexOf(Param);
@@ -126,7 +126,7 @@ void EnergomeraRead()
 void SendCommand(byte* cmd, int size)
 {
     digitalWrite(DIR, HIGH);
-    RS485.write (cmd,size);
+    UART.write (cmd,size);
     digitalWrite(DIR, LOW);
 }
 
@@ -170,16 +170,16 @@ void EmergomeraWrite()
 void setup()
 {
   Serial.begin(9600);
-  RS485.begin(9600);
+  UART.begin(9600);
   pinMode(DIR, OUTPUT);
   digitalWrite(DIR, HIGH);
 }
 
 void EnergomeraCycle()
 { 
-  if (RS485.available())
+  if (UART.available())
     {
-      char response = RS485.read();
+      char response = UART.read();
       response &= 0x7F;// convert 8N1 to 7E1
       
       //Serial.print(response);
