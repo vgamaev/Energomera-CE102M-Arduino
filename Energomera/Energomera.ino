@@ -134,45 +134,28 @@ void EmergomeraWrite()
 {
     switch (Step) {
         case 1:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdOpenSesion,5);
-              digitalWrite(DIR, LOW);
-              SendCommand(CmdOpenSesion,5);
+             SendCommand(CmdOpenSesion,5);
         break;
         case 2:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdReadType,6);
-              digitalWrite(DIR, LOW); 
+             SendCommand(CmdReadType,6);
         break;
         case 3:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdEtope,13);
-              digitalWrite(DIR, LOW);
+             SendCommand(CmdEtope,13);
         break;
         case 4:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdVolta,13);
-              digitalWrite(DIR, LOW);
+             SendCommand(CmdVolta,13);
         break;
         case 5:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdPower,13);
-              digitalWrite(DIR, LOW);
+             SendCommand(CmdPower,13);
         break;
         case 6:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdFrequ,13);
-              digitalWrite(DIR, LOW);
+             SendCommand(CmdFrequ,13);
         break;
         case 7:
-              digitalWrite(DIR, HIGH);
-              RS485.write (CmdCurre,13);
-              digitalWrite(DIR, LOW);
+             SendCommand(CmdCurre,13);
         break;
         case 8:
-               digitalWrite(DIR, HIGH);
-               RS485.write (CmdCos_f,13);
-               digitalWrite(DIR, LOW);
+             SendCommand(CmdCos_f,13);
         break;
         case CYCLE_TIME:
                Step = 0;
