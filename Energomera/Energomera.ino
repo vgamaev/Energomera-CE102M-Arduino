@@ -25,7 +25,7 @@ byte CmdCos_f[] = {0x81,0xd2,0xb1,0x82,0xc3,0x55,0xd2,0xd2,0xc5,0x28,0xa9,0x03,0
 #define CYCLE_TIME 15
 #define DIR 8 
  
-SoftwareSerial UART (10, 11); // RX, TX
+SoftwareSerial UART (14, 12); // RX, TX
 
 struct Energomera{
   String NameParam;
