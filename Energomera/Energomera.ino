@@ -23,9 +23,9 @@ byte CmdCos_f[] = {0x81,0xd2,0xb1,0x82,0xc3,0x55,0xd2,0xd2,0xc5,0x28,0xa9,0x03,0
 
 
 #define CYCLE_TIME 15
-#define DIR 8 
+#define DIR 15  //8 
  
-SoftwareSerial UART (10, 11); // RX, TX
+SoftwareSerial UART(14, 12); //(10, 11); // RX, TX
 
 struct Energomera{
   String NameParam;
@@ -170,7 +170,7 @@ void EmergomeraWrite()
 void setup()
 {
   Serial.begin(9600);
-  UART.begin(9600);
+  UART.begin(9600); //, SWSERIAL_8N1, 14, 12, false, 256);
   pinMode(DIR, OUTPUT);
   digitalWrite(DIR, HIGH);
 }
@@ -189,10 +189,11 @@ void EnergomeraCycle()
     }
     
     //ReadStr = "FREQU(50.00)";
+    //Serial.println(ReadStr);
       
     if (millis() - Previous > 1000)
     {
-     Previous = millis();      
+     Previous = millis();  
      EnergomeraRead();
      Step ++;
      EmergomeraWrite();          
