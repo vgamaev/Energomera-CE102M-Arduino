@@ -1,5 +1,7 @@
 #include <SoftwareSerial.h>
 
+#define  ENERGOMERA
+
 long Previous = 0; 
 int Step = 0;
 char x [50];
